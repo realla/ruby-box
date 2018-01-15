@@ -74,6 +74,12 @@ module RubyBox
       }).create
     end
 
+    def embed_link
+      url = "#{RubyBox::API_URL}/#{resource_name}/#{id}?fields=expiring_embed_link"
+      data = @session.get( url )
+      data['expiring_embed_link']['url']
+    end
+
     private
     def file_content_url
       "#{RubyBox::API_URL}/#{resource_name}/#{id}/content"
